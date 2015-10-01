@@ -1,0 +1,27 @@
+
+#RewriteEngine On
+
+# RewriteBase
+#RewriteBase /
+
+
+# Keep these lines even in maintenance mode, to have an access to the website
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond $1 !^(index\.php)
+#RewriteRule ^(.*)$ index.php/$1 [L]
+
+#Options +FollowSymLinks
+IndexIgnore */*
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
+</IfModule>
+
+
