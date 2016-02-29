@@ -1,0 +1,59 @@
+<?php $this->load->view('template_header') ?><?php echo form_open_multipart(current_url()); ?>
+<h1>Laporan Penelitian</h1>
+<?php echo $custom_error; ?>
+
+<p><label for="judul">Judul<span class="required">*</span></label>                                
+  <input id="judul" name="judul" value="<?php echo set_value('judul'); ?>" />
+  <?php echo form_error('judul', '<div>', '</div>'); ?>
+</p>
+
+<p><label for="penulis">Penulis<span class="required">*</span></label>                                
+  <input id="penulis" type="text" name="penulis" value="<?php echo set_value('penulis'); ?>"  />
+  <?php echo form_error('penulis', '<div>', '</div>'); ?>
+</p>
+
+<p><label for="email">Email<span class="required">*</span></label>                                
+  <input id="email" placeholder="sample@sample.com" type="text" name="email" value="<?php echo set_value('email'); ?>"  />
+  <?php echo form_error('email', '<div>', '</div>'); ?>
+</p>
+
+<p><label for="tahun">Tahun<span class="required">*</span></label>                                
+  <input id="tahun" type="text" placeholder="YYYY" name="tahun" value="<?php echo set_value('tahun'); ?>"  />
+  <?php echo form_error('tahun', '<div>', '</div>'); ?>
+</p>
+
+<p><label for="sub">Kategori<span class="required">*</span></label>                                
+  <select id="sub" type="dropdown" name="sub" value="<?php echo set_value('sub'); ?>"  >
+    <option value="">-Pilih-</option>
+    <?php
+    foreach ($combolevel as $value) {
+      echo "<option value='" . $value['id'] . "'>" . $value['nama'] . "</option>";
+    }
+    ?>
+  </select>
+  <?php echo form_error('sub', '<div>', '</div>'); ?>
+</p>
+
+<p><label for="pdf">Upload File Pdf</label>                                
+  <input id="pdf" type="file" name="pdf" value="<?php echo set_value('pdf'); ?>"  />
+  <?php echo form_error('pdf', '<div>', '</div>'); ?>
+</p>
+
+<p><label for="isi">Isi<span class="required">*</span></label>                                
+  <textarea id="isi" name="isi"><?php echo set_value('isi'); ?></textarea>
+  <?php echo form_error('isi', '<div>', '</div>'); ?>
+</p>
+
+<p>
+  <?php echo form_submit('submit', 'Submit'); ?>
+</p>
+
+<?php echo form_close(); ?>
+
+
+<script type="text/javascript">
+  tinymce.init({
+    selector: "textarea"
+  });
+</script>
+
